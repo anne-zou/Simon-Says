@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     String[] color = {"pink", "blue", "purple", "green"};
 
     boolean gameOver = true;
-    int score = 0;
+    int score;
     int curButtonIndex;
 
     String whatToSay(int curButtonIndex) {
@@ -60,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
         scoreText = (TextView) findViewById(R.id.score);
         timeText = (TextView) findViewById(R.id.time);
 
-        simonSays.setText("Tap any button to start the game.");
-
         // initialize the CountDownTimer
         timer = new CountDownTimer(4000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -76,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 simonSays.setText("Tap any button to play again.");
             }
         };
+        // Tap a button to start a new game.
     }
 
     public void onClick(View view){
