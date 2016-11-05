@@ -11,25 +11,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp">
+        android:orientation="horizontal">
 
         <!--Text that says "Time (seconds)"-->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/Time"
             android:layout_weight="1"
-            android:textSize="30dp"/>
+            android:textSize="20sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"/>
         <!--Text that says "Score"-->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/Score"
             android:layout_weight="1"
-            android:textSize="30dp"/>
+            android:textSize="20sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"/>
 
     </LinearLayout>
 
@@ -37,38 +40,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:orientation="horizontal">
 
         <!--Text that shows the time left-->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:gravity="center_horizontal"
-            android:id="@+id/time"/>
+            android:text="0"
+            android:id="@+id/time"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"/>
         <!--Text that shows the score-->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:layout_weight="1"
-            android:id="@+id/score"/>
+            android:text="0"
+            android:id="@+id/score"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"/>
 
     </LinearLayout>
 
     <!--First row of buttons-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="2">
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#ffaad7"
@@ -76,7 +83,7 @@
             android:onClick="onClick"
             />
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#aad7ff"
@@ -89,19 +96,19 @@
     <!--Second row of buttons-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:layout_weight="2">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#d2aaff"
             android:id="@+id/Button3"
             android:onClick="onClick"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#d7ffaa"
@@ -109,5 +116,14 @@
             android:onClick="onClick"/>
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="20sp"
+        android:id="@+id/simonSays"/>
 
 </LinearLayout>
