@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean gameOver = true;
     int score;
-    int curButtonIndex;
+    volatile int curButtonIndex;
 
     String whatToSay(int curButtonIndex) {
         return "Simon says: tap the " + color[curButtonIndex] + " button.";
