@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     Button[] b = new Button[4];
     String[] color = {"pink", "blue", "purple", "green"};
 
-    boolean gameOver = true;
-    int score;
+    volatile boolean gameOver = true;
+    volatile int score;
     volatile int curButtonIndex;
 
     String whatToSay(int curButtonIndex) {
@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void nextButton() {
-        curButtonIndex = random.nextInt(4);
-        simonSays.setText(whatToSay(curButtonIndex));
+        curButtonIndex = random.nextInt(4); // pick next button
+        simonSays.setText(whatToSay(curButtonIndex)); // update textview
     }
 
     void startNewGame() {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // initialize Button objects
+        // initialize Button objects (these values should never change once assigned)
         b[0] = (Button) findViewById(R.id.Button1);
         b[1] = (Button) findViewById(R.id.Button2);
         b[2] = (Button) findViewById(R.id.Button3);
@@ -78,27 +78,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view){
+        
         if (gameOver) {
             startNewGame();
-        } else {
-            int idViewClicked = view.getId();
+            return;
+        }
+        
+        // Get the id of the view tapped to see if it was the correct button
+        int idOfViewTapped = view.getId();
+        
+        if (idOfViewTapped == b[curButtonIndex].getId()) { // the correct button was tapped!
 
-            if (idViewClicked == b[curButtonIndex].getId()) { // correct button clicked
+            // update & display score
+            ++score;
+            scoreText.setText("" + score);
 
-                // update score
-                ++score;
-                scoreText.setText("" + score);
-
-                nextButton();
-                timer.start();
-
-            } else {
-                // wrong button clicked
+            // generate & display the next Simon Says instruction, and restart the timer
+            nextButton();
+            timer.start();
+            
+            return;
+        }   
+        
+        // check if a wrong button was tapped
+        for (int i = 0; i < 4; ++i) {
+            if (i != curButtonIndex && idOfViewTapped == b[i].getId()) { // a wrong button was tapped!
                 gameOver = true;
                 timer.cancel();
                 Toast.makeText(getApplicationContext(), "Wrong Button!", Toast.LENGTH_SHORT).show();
-                simonSays.setText("Tap any button to play again.");
-            }
+                simonSays.setText("Tap anywhere to play again.");
+                return;
+             }
         }
+        
+        // if the view tapped was not a button, do nothing
     }
+    
 }
