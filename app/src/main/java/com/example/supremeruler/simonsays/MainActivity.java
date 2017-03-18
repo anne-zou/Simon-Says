@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         }
         
         // if the view tapped was not a button, do nothing
-    }
+
+    } // end onClick method definition
     
-}
+} // end MainActivity class definition
