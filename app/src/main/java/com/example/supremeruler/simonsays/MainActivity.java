@@ -62,11 +62,13 @@ public class MainActivity extends AppCompatActivity {
 
         // initialize the CountDownTimer
         timer = new CountDownTimer(4000, 1000) {
+            @Override
             public void onTick(long millisUntilFinished) {
                 // update the time
                 String timeLeft = Long.toString(millisUntilFinished / 1000);
                 timeText.setText("" + timeLeft);
-            }
+            }       
+            @Override
             public void onFinish() { // time's up!
                 gameOver = true;
                 timeText.setText("0");
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         // Tap a button to start a new game.
     }
 
+    @Override
     public void onClick(View view){
         
         if (gameOver) {
